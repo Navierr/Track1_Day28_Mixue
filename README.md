@@ -7,7 +7,6 @@
 | **Phạm Tiến Hưng** | 2A202601800 | Chẩn đoán điểm nghẽn (5 câu hỏi + ADKAR); Thiết kế AS-IS/TO-BE; Dashboard Hành Động v1/v2; Memo quyết định (§6.4); Gate 2 Owner (Pilot & FinOps) | *(Nhóm phản biện: **Mixue\_02** )* **[Trục Hành động]** Lộ trình Gate 2 của nhóm bạn đã có Owner rõ và bằng chứng vật lý để chuyển pha, nhưng chưa thấy baseline thật của chỉ số Self-Resolved — nên ghi rõ đây là ước tính thiết kế và cam kết đo chính thức từ tuần đầu go-live để Kill Criteria có giá trị thực chất. **[Trục Chỉ số]** Dashboard thiếu chỉ số FinOps (chi phí/session); nếu không có ngưỡng trigger cắt token từ đầu, rất dễ vượt mức cho phép khi scale pilot. |
 | **Nguyễn Quang Sơn** | 2A202601956 | Phân tích Kiến trúc tin cậy; Code Gate `quote_verbatim`; LTI 1.3 telemetry; Mollick 3 vùng; Gate 1 Owner (Trust Repair); cơ chế Handoff/Fallback/Freshness | *(Nhóm phản biện: **Mixue\_02** )* **[Trục Phạm vi]** Sản phẩm và người dùng chính được mô tả rõ, nhưng ranh giới 3 quy trình còn chồng lấn — cần tách bạch rõ quy trình nào AI tự xử lý và quy trình nào bắt buộc có con người kiểm tra trước khi output ra ngoài. **[Trục Framework]** ADKAR được áp dụng nhưng chưa thấy bằng chứng cứng (hard evidence) để kết luận người dùng đang kẹt ở tầng nào; nếu chỉ dựa trên quan sát định tính thì nguyên nhân gốc dễ bị suy diễn sai. |
 
-
 ---
 
 ## 📁 Cấu trúc Thư mục Nộp bài (§6.3)
@@ -98,7 +97,7 @@ Day28_Track01_PhamTIenHung/
 | **Dữ liệu (Data Readiness)** | Đã có Corpus 18 tài liệu chuẩn, nhưng thiếu phân loại độ mới (Freshness/Timestamp) và kiểm soát section metadata. | **THIẾU** |
 | **Governance** | Tiêu chuẩn Zero-PII đã cam kết (Day 22), nhưng quy định ranh giới bài tập được phép hỗ trợ chưa ban hành chính thức. | **THIẾU** |
 | **Vận hành (Operations)** | Chưa có phân công Lab Coach trực tiếp nhận handoff; chưa có SLA phản hồi cho ca khó. | **THIẾU** |
-| **Khả năng hấp thụ (Absorption)**| Người dùng chưa có kênh phản hồi lỗi trực tiếp; chưa có vòng lặp cập nhật lỗi vào Knowledge Base. | **THIẾU** |
+| **Khả năng hấp thụ (Absorption)** | Người dùng chưa có kênh phản hồi lỗi trực tiếp; chưa có vòng lặp cập nhật lỗi vào Knowledge Base. | **THIẾU** |
 
 > **Kết luận Gartner-Lite:** **Pilot có kiểm soát trên 2 lớp học để củng cố Mức sẵn sàng (Readiness) và Khả năng hấp thụ (Absorption); TUYỆT ĐỐI CHƯA rollout trên diện rộng.**
 
@@ -118,7 +117,7 @@ Day28_Track01_PhamTIenHung/
 | **Desire** | Có lý do để muốn thay đổi | **Điểm nghẽn cốt lõi:** Sinh viên ngại tin câu trả lời vì 40% trích dẫn bị cắt xén, không tìm thấy đoạn văn trong sách; sợ bị điểm liệt nên không dám dùng. | **NGHẼN NẶNG (GỐC)** |
 | **Knowledge** | Biết cách làm | Chưa được hướng dẫn cách đặt câu hỏi theo ngữ cảnh slide và cách đọc link `doc_id#section_id`. | Cần làm |
 | **Ability** | Làm được trong thực tế | **Quy trình bị đứt:** Khi AI trả lời mâu thuẫn hoặc không chắc chắn, sinh viên không có nút bấm để chuyển tiếp cho trợ giảng (Lab Coach) hỗ trợ. | **NGHẼN NẶNG (GỐC)** |
-| **Reinforcement**| Duy trì hành vi mới | Chưa có ghi nhận điểm chuyên cần tự học và chưa có cơ chế tuyên dương giảng viên tích cực dùng AI. | Cần làm |
+| **Reinforcement** | Duy trì hành vi mới | Chưa có ghi nhận điểm chuyên cần tự học và chưa có cơ chế tuyên dương giảng viên tích cực dùng AI. | Cần làm |
 
 > **Kết luận ADKAR:** Mở lớp đào tạo (Knowledge) là hoàn toàn vô nghĩa nếu không giải quyết được **nỗi sợ thiếu tin cậy (Desire)** và **thiếu công cụ chuyển giao ca khó (Ability)**.
 
@@ -142,7 +141,7 @@ Day28_Track01_PhamTIenHung/
 | **1. Tiếp cận** | **Tìm file / hỏi bạn:** Sinh viên tìm tài liệu rời rạc trên Google Drive/Zalo; khi gặp bài khó thì chờ hôm sau hỏi trợ giảng (bế tắc khung 21h–23h). | **Hỏi AI theo quy trình:** Mở widget VLearn nhúng trực tiếp trong LMS Canvas/Moodle, đặt câu hỏi kèm ngữ cảnh slide bài giảng. |
 | **2. Phản hồi** | **Nhận câu trả lời chắp vá:** AI trả lời chung chung hoặc đưa trích dẫn chắp vá (40% lỗi cite), không biết nằm ở trang sách nào. | **Xem nguồn & Ngày cập nhật:** AI gợi mở từng bước (Socratic), đính kèm link trích dẫn nguyên văn (`doc_id#section_id`) và timestamp cập nhật $\le 12$ tháng. |
 | **3. Kiểm chứng** | **Vô chủ & Hoang mang:** Không có ai chịu trách nhiệm; sinh viên sợ bị trừ điểm do trích dẫn sai hoặc chép nguyên văn vi phạm liêm chính. | **Kiểm tra có trách nhiệm:** Sinh viên bắt buộc bấm link đối chiếu giáo trình và tự làm bài (Sinh viên chịu trách nhiệm bài nộp; Lab Coach kiểm duyệt nguồn). |
-| **4. Xử lý ngoại lệ**| **Bỏ dở bài tập:** Khi AI bị ảo giác hoặc trả lời sai, sinh viên không biết hỏi ai, đành bỏ dở bài tập hoặc học vẹt. | **Dùng / Báo lỗi có Handoff:** Nếu câu trả lời khó hiểu hoặc mâu thuẫn $\rightarrow$ Bấm nút `[Handoff to Lab Coach]`. Lab Coach nhận full ngữ cảnh giải đáp trong 2h. |
+| **4. Xử lý ngoại lệ** | **Bỏ dở bài tập:** Khi AI bị ảo giác hoặc trả lời sai, sinh viên không biết hỏi ai, đành bỏ dở bài tập hoặc học vẹt. | **Dùng / Báo lỗi có Handoff:** Nếu câu trả lời khó hiểu hoặc mâu thuẫn $\rightarrow$ Bấm nút `[Handoff to Lab Coach]`. Lab Coach nhận full ngữ cảnh giải đáp trong 2h. |
 
 ### 3.2. Ba thay đổi bắt buộc
 1. **Nguồn kiểm chứng:** Mọi câu trả lời bắt buộc gắn link `doc_id#section_id` đối chiếu trực tiếp đoạn văn giáo trình kèm **Timestamp trong vòng 12 tháng**.
@@ -198,7 +197,7 @@ $$\text{Nguồn (18 docs + Timestamp)} \longrightarrow \text{Trích nguồn (Ver
 | **3** | **Tầng 2:** Hành vi & Tốc độ | **Workflow Metric** | **Thời gian từ khi cấp LMS đến SV đầu tiên dùng (TTF)** | **10 ngày**<br>*(Day 26)* | **$\le 7$ ngày**<br>*(Day 26 Target)* | Audit log tích hợp LTI trên LMS trường đối tác | **Nguyễn Quang Sơn** | **Nếu $>14$ ngày (Luật R-02):** Kỹ sư Sơn trực tiếp cấu hình 1-1 với IT trường trong 48h để đưa nút AI lên nav-bar môn học. |
 | **4** | **Tầng 5:** Giá trị & FinOps | **Product Metric** | **Chi phí AI trên mỗi phiên giải quyết** | **1.450 đ**<br>*(Day 25-26)* | **$\le 1.200$ đ**<br>*(ngưỡng tối ưu)* | Billing telemetry LangSmith & OpenAI/Vertex API | **Phạm Tiến Hưng** | **Nếu $>1.800$ đ (Luật R-04):** Bật prompt caching cho toàn bộ đề cương, chuyển 70% truy vấn tra cứu sang model Flash. |
 
-- 📄 *File tính Excel v1:* [v1/dashboard_hanh_dong_v1.xlsx](file:///e:/Classroom/Code/Codelabs/Day28_Track01_PhamTIenHung/v1/dashboard_hanh_dong_v1.xlsx)
+- 📄 *File tính Excel v1:* [v1/dashboard_hanh_dong_v1.xlsx](v1/dashboard_hanh_dong_v1.xlsx)
 
 ---
 
@@ -220,8 +219,8 @@ $$\text{Nguồn (18 docs + Timestamp)} \longrightarrow \text{Trích nguồn (Ver
    $\rightarrow$ **Thay đổi trong Bản v2:** Nâng cấp thành *Qualified Self-Resolved Rate* — bổ sung **cơ chế Friction**: Sinh viên bắt buộc đọc ít nhất 1 gợi ý và chọn lý do escalate trước khi nút Handoff được kích hoạt.
 
 ### 6.3. File Dashboard Hành Động bản v2 và Memo Quyết định
-- 📄 **File Excel v2:** [dashboard/dashboard_hanh_dong_v2.xlsx](file:///e:/Classroom/Code/Codelabs/Day28_Track01_PhamTIenHung/dashboard/dashboard_hanh_dong_v2.xlsx)
-- 📄 **Memo Quyết định (§6.4–6.5):** [memo/memo_quyet_dinh.md](file:///e:/Classroom/Code/Codelabs/Day28_Track01_PhamTIenHung/memo/memo_quyet_dinh.md)
+- 📄 **File Excel v2:** [dashboard/dashboard_hanh_dong_v2.xlsx](dashboard/dashboard_hanh_dong_v2.xlsx)
+- 📄 **Memo Quyết định (§6.4–6.5):** [memo/memo_quyet_dinh.md](memo/memo_quyet_dinh.md)
   - **Quyết định cuối:** **SỬA (PIVOT / FIX TRƯỚC KHI MỞ RỘNG)**.
   - **Lý do:** Composite Gate 48%, Gartner-Lite 4/5 THIẾU — không mở rộng khi chưa đủ độ tin cậy.
 
